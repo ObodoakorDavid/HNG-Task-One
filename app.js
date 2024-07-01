@@ -11,6 +11,10 @@ const port = 3000;
 app.set("trust proxy", true);
 app.use(cors());
 
+app.get("/", (req, res) =>
+  res.send("Kindly head to /api/hello to view the task")
+);
+
 app.get("/api/hello", async (req, res) => {
   const { visitor_name } = req.query;
   try {
