@@ -30,7 +30,9 @@ app.get("/api/hello", async (req, res) => {
     res.status(200).json({
       client_ip: clientIp, // The IP address of the requester
       location: city, // The city of the requester
-      greeting: `Hello, ${visitor_name}!, the temperature is ${data.current.temp_c} degrees Celcius in ${city}`,
+      greeting: `Hello, ${
+        visitor_name ? visitor_name : "Anon"
+      }!, the temperature is ${data.current.temp_c} degrees Celcius in ${city}`,
     });
   } catch (error) {
     console.log(`Error: ${error.message}`);
