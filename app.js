@@ -18,7 +18,7 @@ app.get("/", (req, res) =>
 app.get("/api/hello", async (req, res) => {
   const { visitor_name } = req.query;
   try {
-    const clientIp = req.ip;
+    const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     const response = await axios.get(`http://ip-api.com/json/${clientIp}`);
     const { city } = response.data;
 
